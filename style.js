@@ -1,40 +1,41 @@
-const burger=document.querySelector('.burger');
-burger.addEventListener('click', function(){
-	document.querySelector('.header__menu').classList.toggle('active');
-	document.querySelector('html').classList.toggle('lock');
-	burger.classList.toggle('active');
-})
-const headerLinks = document.querySelectorAll('.header__link');
-headerLinks.forEach((item, index) => item.addEventListener('click', function(e){
-	e.preventDefault();
-	document.querySelector('.header__menu').classList.remove('active');
-	document.querySelector('html').classList.remove('lock');
-	burger.classList.remove('active');
-	switch (index){
-		case 0:
-		scrollOffset('info')
-		break;
-		case 1:
-		scrollOffset('cypher')
-		break;
-		case 2:
-		scrollOffset('author')
-		break;
+document.addEventListener("DOMContentLoaded", function(event) { 
+	const burger=document.querySelector('.burger');
+	burger.addEventListener('click', function(){
+		document.querySelector('.header__menu').classList.toggle('active');
+		document.querySelector('html').classList.toggle('lock');
+		burger.classList.toggle('active');
+	})
+	const headerLinks = document.querySelectorAll('.header__link');
+	headerLinks.forEach((item, index) => item.addEventListener('click', function(e){
+		e.preventDefault();
+		document.querySelector('.header__menu').classList.remove('active');
+		document.querySelector('html').classList.remove('lock');
+		burger.classList.remove('active');
+		switch (index){
+			case 0:
+			scrollOffset('info')
+			break;
+			case 1:
+			scrollOffset('cypher')
+			break;
+			case 2:
+			scrollOffset('author')
+			break;
 
+		}
+	}))
+
+	function scrollOffset(elem){
+		var element = document.getElementById(`${elem}`);
+		var headerOffset = 90;
+		var elementPosition = element.getBoundingClientRect().top;
+		var offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+		window.scrollTo({
+			top: offsetPosition,
+			behavior: "smooth"
+		});
 	}
-}))
-
-function scrollOffset(elem){
-	var element = document.getElementById(`${elem}`);
-	var headerOffset = 90;
-	var elementPosition = element.getBoundingClientRect().top;
-	var offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-	window.scrollTo({
-		top: offsetPosition,
-		behavior: "smooth"
-	});
-}
 
 
 
@@ -78,3 +79,4 @@ function init(){
 	})
 	aboutItemsBtn.forEach(i => i.classList.remove('active'))
 }
+});

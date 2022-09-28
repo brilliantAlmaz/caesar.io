@@ -1,34 +1,35 @@
+document.addEventListener("DOMContentLoaded", function(event) { 
 
-const btnCypher = document.querySelector('.cypher-btn');
-const resultCypher = document.querySelector('.cypher-result');
 
-const btnDecypher = document.querySelector('.decypher-btn');
-const resultDecypher = document.querySelector('.decypher-result');
+	const btnCypher = document.querySelector('.cypher-btn');
+	const resultCypher = document.querySelector('.cypher-result');
 
-let key;
-let text;
-let keyD;
-let textD
-btnDecypher.addEventListener('click', function(){
-	textD = document.querySelector('.decypher__text').value;
-	keyD = document.querySelector('.decypher__key').value;
-	if (keyD == '')
-		keyD=0;
-	resultDecypher.value=decypher(textD,keyD);
-});
-btnCypher.addEventListener('click', function(){
-	text = document.querySelector('.text').value;
-	key = document.querySelector('.key').value;
-	if (key == '')
-		key=0;
-	resultCypher.value=cypher(text,key);
-});
-function cypher(text,key){
-	//console.log(text.charCodeAt(0))
-	let newText='';
-	let charCode;
-	for (let i=0; i<text.length;i++){
-		//text.charCodeAt(i);
+	const btnDecypher = document.querySelector('.decypher-btn');
+	const resultDecypher = document.querySelector('.decypher-result');
+
+	let key;
+	let text;
+	let keyD;
+	let textD
+	btnDecypher.addEventListener('click', function(){
+		textD = document.querySelector('.decypher__text').value;
+		keyD = document.querySelector('.decypher__key').value;
+		if (keyD == '')
+			keyD=0;
+		resultDecypher.value=decypher(textD,keyD);
+	});
+	btnCypher.addEventListener('click', function(){
+		text = document.querySelector('.text').value;
+		key = document.querySelector('.key').value;
+		if (key == '')
+			key=0;
+		resultCypher.value=cypher(text,key);
+	});
+	function cypher(text,key){
+		let newText='';
+		let charCode;
+		for (let i=0; i<text.length;i++){
+
 		if (text.charCodeAt(i)>=1040 && text.charCodeAt(i) <=1071){ //russian uppercase
 			charCode = ((text.charCodeAt(i)-1040 + +key) % 32) + 1040;
 		}
@@ -46,16 +47,13 @@ function cypher(text,key){
 			charCode=text.charCodeAt(i);
 		}
 
-		//ё problem
 		if (text.charCodeAt(i) == 1105){
-			//text.charCodeAt(i)=1077;
 			charCode = ((text.charCodeAt(i)-1072 +4 + +key) % 32) + 1072;
 		}
 		else if (text.charCodeAt(i) == 1025)
 		{
 			charCode = ((text.charCodeAt(i)-1040 +20 + +key) % 32) + 1040;
 		}
-		//console.log(charCode)
 		newText+=String.fromCharCode(charCode);
 		console.log(text.charCodeAt(i))
 	}
@@ -63,7 +61,6 @@ function cypher(text,key){
 }
 
 function decypher(text,key){
-	//console.log(text.charCodeAt(0))
 	let newText='';
 	let charCode;
 	for (let i=0; i<text.length;i++){
@@ -86,7 +83,7 @@ function decypher(text,key){
 
 		
 		newText+=String.fromCharCode(charCode);
-		//console.log(text.charCodeAt(i))
 	}
 	return newText;
 }
+});
