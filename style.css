@@ -283,6 +283,7 @@ html.lock {
 }
 
 .about__item-closer {
+  cursor: pointer;
   -webkit-transition: all 0.2s ease 0s;
   transition: all 0.2s ease 0s;
   width: 35px;
