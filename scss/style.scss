@@ -222,6 +222,37 @@ html{
 	//transform: scale(-1, 1);
 }
 
+.cypher__file{
+	//margin:20px auto 0;
+	cursor:pointer;
+	display: block;
+	width:100px;
+	height:100px;
+	background: #e29578;
+	border-radius:20px;
+	text-align: center;
+	color:#fff;
+}
+@keyframes anim{
+	0% {
+		transform:rotate(0deg);
+	}
+	33.333%{
+		transform:rotate(10deg);
+	}
+	66.666%{
+		transform:rotate(-10deg);
+	}
+	100%{
+		transform:rotate(0deg);
+	}
+
+}
+#file-cypher,#file-decypher{
+	position: absolute;
+	z-index:-10;
+	opacity:0;
+}
 .cypher,.decypher{
 	position: relative;
 	//top:0;
@@ -280,22 +311,25 @@ textarea{
 		//box-shadow: 0px 0px 10px 1px rgba(34, 60, 80, 0.6) inset;
 	}
 	margin:20px 0 0 0;
-	width:100%;
-	resize:none;
+	min-width:100%;
+	max-width:100%;
+	min-height:100px;
 	padding:20px;
 	border-radius: 20px;
 	font-size: 30px;
 	color:#e29578;
 }
 .cypher__row{
-	margin:30px 0 0 0;
+	//margin:30px 0 0 0;
 	display: flex;
 	justify-content:space-between;
 	align-items:center;
 }
+
 .key {
+	margin: 30px 0 0 0;
 	transition:all 0.3s ease 0s;
-	flex: 0 0 100%;
+	width:100%;
 	padding:20px;
 	border-radius: 20px;
 	font-size: 20px;
@@ -308,8 +342,9 @@ textarea{
 	}
 }
 .decypher__key{
+	margin:30px 0 0 0;
 	transition:all 0.3s ease 0s;
-	flex: 0 0 100%;
+	width:100%;
 	padding:20px;
 	border-radius: 20px;
 	font-size: 20px;
@@ -321,7 +356,14 @@ textarea{
 		//box-shadow: 0px 0px 20px 2px rgba(#e29578, 0.6) inset;
 	}
 }
-
+.text-cypher{
+	color:#e29578;
+	font-weight: 600;
+}
+.text-decypher{
+	color:#006d77;
+	font-weight: 600;
+}
 .btn {
 	transition:all 0.3s ease 0s;
 	cursor:pointer;

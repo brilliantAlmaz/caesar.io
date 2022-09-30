@@ -1,34 +1,74 @@
 document.addEventListener("DOMContentLoaded", function(event) { 
+//cypher
+const btnCypher = document.querySelector('.cypher-btn');
+const resultCypher = document.querySelector('.cypher-result');
+const btnDecypher = document.querySelector('.decypher-btn');
+const resultDecypher = document.querySelector('.decypher-result');
+let key;
+let text;
+let keyD;
+let textD;
+
+//clear btns
+const clearBtn = document.querySelectorAll('.clear__btn');
+clearBtn.forEach((item,index) => item.addEventListener('click', function(){
+	if (index==0){
+		document.querySelector('.text').value='';
+		document.querySelector('.key').value='';
+	}
+	else{
+		document.querySelector('.decypher__text').value='';
+		document.querySelector('.decypher__key').value= '';
+	}
+}))
+
+//valid inputs
+//text inputs
 
 
-	const btnCypher = document.querySelector('.cypher-btn');
-	const resultCypher = document.querySelector('.cypher-result');
 
-	const btnDecypher = document.querySelector('.decypher-btn');
-	const resultDecypher = document.querySelector('.decypher-result');
+//fileReader
+const inputCypher = document.querySelector('#file-cypher');
+inputCypher.addEventListener('change', function(e) {
+	//console.log(inputCypher.files)
+	const reader = new FileReader();
+	reader.onload = function(){
+		document.querySelector('.text').value=reader.result;
+		document.querySelector('.decypher__text').value=reader.result;
+		reader.abort();
+	}
+	reader.readAsText(inputCypher.files[0]);
+})
 
-	let key;
-	let text;
-	let keyD;
-	let textD
-	btnDecypher.addEventListener('click', function(){
-		textD = document.querySelector('.decypher__text').value;
-		keyD = document.querySelector('.decypher__key').value;
-		if (keyD == '')
-			keyD=0;
-		resultDecypher.value=decypher(textD,keyD);
-	});
-	btnCypher.addEventListener('click', function(){
-		text = document.querySelector('.text').value;
-		key = document.querySelector('.key').value;
-		if (key == '')
-			key=0;
+btnDecypher.addEventListener('click', function(){
+	textD = document.querySelector('.decypher__text').value;
+	keyD = document.querySelector('.decypher__key').value;
+	if (keyD == '')
+		keyD=0;
+	resultDecypher.value=decypher(textD,keyD);
+
+});
+btnCypher.addEventListener('click', function(){
+	text = document.querySelector('.text').value;
+	key = document.querySelector('.key').value;
+	if (key == ''){
+		key=0;
+		document.querySelector('.key').value=0;
+	}
+	if (isNaN(key)){
+		alert('Для ключа использутей только целые числа.')
+		document.querySelector('.key').value='';
+	}
+
+	else
 		resultCypher.value=cypher(text,key);
-	});
-	function cypher(text,key){
-		let newText='';
-		let charCode;
-		for (let i=0; i<text.length;i++){
+	//file
+
+});
+function cypher(text,key){
+	let newText='';
+	let charCode;
+	for (let i=0; i<text.length;i++){
 
 		if (text.charCodeAt(i)>=1040 && text.charCodeAt(i) <=1071){ //russian uppercase
 			charCode = ((text.charCodeAt(i)-1040 + +key) % 32) + 1040;
@@ -38,7 +78,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		}
 		else if (text.charCodeAt(i)>=65 && text.charCodeAt(i) <=90){ // english uppercase
 			charCode = ((text.charCodeAt(i)-65 + +key) % 26) + 65;
-			console.log(text.charCodeAt(i))
+			//console.log(text.charCodeAt(i))
 		}
 		else if (text.charCodeAt(i)>=97 && text.charCodeAt(i) <=122){ // english lowercase
 			charCode = ((text.charCodeAt(i)-97 + +key) % 26) + 97;
@@ -55,7 +95,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 			charCode = ((text.charCodeAt(i)-1040 +20 + +key) % 32) + 1040;
 		}
 		newText+=String.fromCharCode(charCode);
-		console.log(text.charCodeAt(i))
+		//console.log(text.charCodeAt(i))
 	}
 	return newText;
 }
@@ -86,4 +126,9 @@ function decypher(text,key){
 	}
 	return newText;
 }
+
+
+
+
+
 });

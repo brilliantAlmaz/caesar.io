@@ -61,7 +61,7 @@
 								<div class="about__item-closer"></div>
 							</div>
 							<div class="about__item-text">
-								Введите текст, который хотите зашифровать/расшифровать, введите ключ, и нажмите на кнопку. В результате Вы получите зашифрованный/расшифрованный текст.
+								Введите текст, который хотите <span class='text-cypher'>зашифровать</span>/<span class='text-decypher'>расшифровать</span>, введите ключ, и нажмите на кнопку. В результате Вы получите <span class='text-cypher'>зашифрованный</span>/<span class='text-decypher'>расшифрованный</span> текст.
 							</div>
 						</li>
 					</ul>
@@ -79,10 +79,17 @@
 							</div>
 							<form action="#">
 								<div class="cypher__form-title title">Введите данные</div>
-								<textarea name="text" id="" cols="30" placeholder='Напишите текст, который хотите зашифровать' class='text'></textarea>
+								<textarea name="text" id=""  placeholder='Напишите текст, который хотите зашифровать' class='text'></textarea>
+								<!--file reader here-->
 								<div class="cypher__row">
-									<input type="tel" class="key" placeholder='Вставьте ключ'>
+									<label for="file-cypher" class='btn'>
+										Загрузить Файл
+									</label>
+									<input type="file" class='file' id='file-cypher' name ='fileReadCypher'>
+									<div class="clear__btn btn">Очистить поля</div>
 								</div>
+								<input type="tel" class="key" placeholder='Вставьте ключ'>
+
 								<div class="cypher-btn btn">Шифруемся</div>
 								<div class="cypther__result cypher__form-title">
 									Результат
@@ -102,9 +109,15 @@
 							<form action="#">
 								<div class="cypher__form-title title" style='color:#006d77'>Введите данные</div>
 								<textarea name="text" id="" cols="30" placeholder='Напишите текст, который хотите расшифровать' class='decypher__text'></textarea>
+								<!--file reader here-->
 								<div class="cypher__row">
-									<input type="tel" class="decypher__key" placeholder='Вставьте ключ'>
+									<label for="file-cypher" class='cypher__file decypher-btn btn'>
+										Загрузить Файл
+									</label>
+									<input type="file" class='fileD' id='file-decypher' name ='fileReadCypher'>
+									<div class="clear__btn decypher-btn btn">Очистить поля</div>
 								</div>
+								<input type="tel" class="decypher__key" placeholder='Вставьте ключ'>
 								<div class="decypher-btn btn">Расшифруемся</div>
 								<div class="cypther__result cypher__form-title" style='color:#006d77'>
 									Результат

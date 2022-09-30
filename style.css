@@ -330,6 +330,60 @@ html.lock {
   overflow: hidden;
 }
 
+.cypher__file {
+  cursor: pointer;
+  display: block;
+  width: 100px;
+  height: 100px;
+  background: #e29578;
+  border-radius: 20px;
+  text-align: center;
+  color: #fff;
+}
+
+@-webkit-keyframes anim {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  33.333% {
+    -webkit-transform: rotate(10deg);
+            transform: rotate(10deg);
+  }
+  66.666% {
+    -webkit-transform: rotate(-10deg);
+            transform: rotate(-10deg);
+  }
+  100% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+}
+
+@keyframes anim {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  33.333% {
+    -webkit-transform: rotate(10deg);
+            transform: rotate(10deg);
+  }
+  66.666% {
+    -webkit-transform: rotate(-10deg);
+            transform: rotate(-10deg);
+  }
+  100% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+}
+#file-cypher, #file-decypher {
+  position: absolute;
+  z-index: -10;
+  opacity: 0;
+}
+
 .cypher, .decypher {
   position: relative;
   width: 100%;
@@ -387,8 +441,9 @@ textarea {
   -webkit-transition: all 0.3s ease 0s;
   transition: all 0.3s ease 0s;
   margin: 20px 0 0 0;
-  width: 100%;
-  resize: none;
+  min-width: 100%;
+  max-width: 100%;
+  min-height: 100px;
   padding: 20px;
   border-radius: 20px;
   font-size: 30px;
@@ -400,7 +455,6 @@ textarea:focus {
 }
 
 .cypher__row {
-  margin: 30px 0 0 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -413,11 +467,10 @@ textarea:focus {
 }
 
 .key {
+  margin: 30px 0 0 0;
   -webkit-transition: all 0.3s ease 0s;
   transition: all 0.3s ease 0s;
-  -webkit-box-flex: 0;
-      -ms-flex: 0 0 100%;
-          flex: 0 0 100%;
+  width: 100%;
   padding: 20px;
   border-radius: 20px;
   font-size: 20px;
@@ -430,11 +483,10 @@ textarea:focus {
 }
 
 .decypher__key {
+  margin: 30px 0 0 0;
   -webkit-transition: all 0.3s ease 0s;
   transition: all 0.3s ease 0s;
-  -webkit-box-flex: 0;
-      -ms-flex: 0 0 100%;
-          flex: 0 0 100%;
+  width: 100%;
   padding: 20px;
   border-radius: 20px;
   font-size: 20px;
@@ -444,6 +496,16 @@ textarea:focus {
 .decypher__key:focus {
   background: #006d77;
   color: #fff;
+}
+
+.text-cypher {
+  color: #e29578;
+  font-weight: 600;
+}
+
+.text-decypher {
+  color: #006d77;
+  font-weight: 600;
 }
 
 .btn {
