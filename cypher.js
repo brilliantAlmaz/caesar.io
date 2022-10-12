@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 //cypher
 const btnCypher = document.querySelector('.cypher-btn');
 const resultCypher = document.querySelector('.cypher-result');
-const btnDecypher = document.querySelector('.decypher-btn');
+const btnDecypher = document.querySelector('#decypherBtn');
 const resultDecypher = document.querySelector('.decypher-result');
 let key;
 let text;
@@ -34,13 +34,33 @@ inputCypher.addEventListener('change', function(e) {
 	const reader = new FileReader();
 	reader.onload = function(){
 		document.querySelector('.text').value=reader.result;
-		document.querySelector('.decypher__text').value=reader.result;
+		//document.querySelector('.decypher__text').value=reader.result;
 		reader.abort();
 	}
 	reader.readAsText(inputCypher.files[0]);
 })
 
+const inputDecypher = document.querySelector('#file-decypher');
+console.log(inputDecypher)
+console.log(inputCypher)
+inputDecypher.addEventListener('change', function(e) {
+	//console.log(inputCypher.files)
+	const reader = new FileReader();
+	reader.onload = function(){
+		//document.querySelector('.text').value=reader.result;
+		document.querySelector('.decypher__text').value=reader.result;
+		reader.abort();
+	}
+	reader.readAsText(inputDecypher.files[0]);
+})
+
+
+
+
+console.log(btnDecypher)
+console.log(btnCypher)
 btnDecypher.addEventListener('click', function(){
+	console.log('test')
 	textD = document.querySelector('.decypher__text').value;
 	keyD = document.querySelector('.decypher__key').value;
 	if (keyD == '')
@@ -49,6 +69,7 @@ btnDecypher.addEventListener('click', function(){
 
 });
 btnCypher.addEventListener('click', function(){
+	console.log('bebra')
 	text = document.querySelector('.text').value;
 	key = document.querySelector('.key').value;
 	if (key == ''){

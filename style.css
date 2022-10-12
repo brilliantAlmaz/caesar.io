@@ -386,7 +386,7 @@ html.lock {
 
 .cypher, .decypher {
   position: relative;
-  width: 100%;
+  width: 100vw;
   padding: 60px 0 90px;
   background: #006d77;
 }
@@ -466,6 +466,14 @@ textarea:focus {
           align-items: center;
 }
 
+@media (max-width: 650px) {
+  .cypher__row {
+    display: block;
+  }
+  .cypher__row .btn {
+    font-size: 24px;
+  }
+}
 .key {
   margin: 30px 0 0 0;
   -webkit-transition: all 0.3s ease 0s;
